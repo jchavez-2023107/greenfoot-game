@@ -13,6 +13,9 @@ public class CrabWorld extends World
      * Constructor for objects of class CrabWorld.
      * 
      */
+    
+    private Counter counter;
+    
     public CrabWorld()
     {    
         super(800, 600, 1);
@@ -22,6 +25,10 @@ public class CrabWorld extends World
     
     private void prepareWorld()
     {
+        counter = new Counter();
+
+        addObject(counter, 120, 30);
+        
         spawnCrabs();
 
         spawnWorms();
@@ -86,5 +93,10 @@ public class CrabWorld extends World
         int y = Greenfoot.getRandomNumber(getHeight());
 
         addObject(lobster3, x, y);
+    }
+    
+    public Counter getCounter()
+    {
+        return counter;
     }
 }
