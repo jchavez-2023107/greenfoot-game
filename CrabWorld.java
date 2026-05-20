@@ -15,6 +15,15 @@ public class CrabWorld extends World
      */
     public CrabWorld()
     {    
-        super(560, 560, 1); 
+        super(800, 600, 1);
+
+        prepareWorld(); 
+    }
+    
+    private void prepareWorld()
+    {
+        // Crab principal en el centro
+        Crab crab = new Crab();
+        addObject(crab, getWidth()/2, getHeight()/2);
     }
 }
