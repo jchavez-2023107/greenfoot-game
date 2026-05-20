@@ -22,13 +22,32 @@ public class CrabWorld extends World
     
     private void prepareWorld()
     {
-        // Crab principal
-        Crab crab = new Crab();
+        spawnCrabs();
 
-        addObject(crab, getWidth()/2, getHeight()/2);
-
-        // Generar 100 worms aleatorios
         spawnWorms();
+
+        spawnLobsters();
+    }
+    
+    // Crear cangrejos
+    public void spawnCrabs()
+    {
+        // Crab principal centro
+        Crab mainCrab = new Crab();
+
+        addObject(mainCrab, getWidth()/2, getHeight()/2);
+
+        // Otros 4 crabs aleatorios
+        for(int i = 0; i < 4; i++)
+        {
+            Crab crab = new Crab();
+
+            int x = Greenfoot.getRandomNumber(getWidth());
+
+            int y = Greenfoot.getRandomNumber(getHeight());
+
+            addObject(crab, x, y);
+        }
     }
     
     // Crear gusanos aleatorios
@@ -44,5 +63,28 @@ public class CrabWorld extends World
 
             addObject(worm, x, y);
         }
+    }
+    
+    // Crear Langostas
+    public void spawnLobsters()
+    {
+        // Esquina izquierda superior
+        Lobster lobster1 = new Lobster();
+
+        addObject(lobster1, 50, 50);
+
+        // Esquina derecha superior
+        Lobster lobster2 = new Lobster();
+
+        addObject(lobster2, getWidth() - 50, 50);
+
+        // Lobster extra aleatoria
+        Lobster lobster3 = new Lobster();
+
+        int x = Greenfoot.getRandomNumber(getWidth());
+
+        int y = Greenfoot.getRandomNumber(getHeight());
+
+        addObject(lobster3, x, y);
     }
 }
