@@ -10,11 +10,12 @@ public class Crab extends Actor
     // Declarar la velocidad del cangrejo
     private int speed = 4; 
     
-    // Acciones a realizar
+    // Acciones principales
     public void act() 
     {
         moveCrab();
         checkBorder();
+        eatWorm();
     }    
     
     //Movimiento principal
@@ -44,6 +45,25 @@ public class Crab extends Actor
         if(getY() <= 5 || getY() >= getWorld().getHeight() - 5)
         {
             turn(180);
+        }
+    }
+    
+    //Comer gusanos
+    public void eatWorm()
+    {
+        Actor worm;
+
+        worm = getOneObjectAtOffset(0, 0, Worm.class);
+
+        if(worm != null)
+        {
+            World world;
+
+            world = getWorld();
+
+            world.removeObject(worm);
+
+            Greenfoot.playSound("eating.wav");
         }
     }
 }

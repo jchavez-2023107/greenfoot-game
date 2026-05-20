@@ -22,8 +22,27 @@ public class CrabWorld extends World
     
     private void prepareWorld()
     {
-        // Crab principal en el centro
+        // Crab principal
         Crab crab = new Crab();
+
         addObject(crab, getWidth()/2, getHeight()/2);
+
+        // Generar 100 worms aleatorios
+        spawnWorms();
+    }
+    
+    // Crear gusanos aleatorios
+    public void spawnWorms()
+    {
+        for(int i = 0; i < 100; i++)
+        {
+            Worm worm = new Worm();
+
+            int x = Greenfoot.getRandomNumber(getWidth());
+
+            int y = Greenfoot.getRandomNumber(getHeight());
+
+            addObject(worm, x, y);
+        }
     }
 }
