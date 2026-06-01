@@ -1,0 +1,5 @@
+*.class
+bluej.pkg
+.idea
+.qodo
+*.ctxt
