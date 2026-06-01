@@ -4,9 +4,9 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE:
-PURPOSE OF PROJECT:
-VERSION or DATE:
+PROJECT TITLE: CRAB GAME
+PURPOSE OF PROJECT: Projecto final para Introducción a CC y TI.
+VERSION or DATE: v1
 HOW TO START THIS PROJECT:
-AUTHORS:
+AUTHORS: Fabio Calvo, Alejandro Chavez, Diego Ruiz, Henry Vicente, Jordi Salazar
 USER INSTRUCTIONS:
