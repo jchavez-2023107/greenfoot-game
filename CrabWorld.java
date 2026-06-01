@@ -1,5 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
+import java.util.ArrayList;
+
 /**
  * Write a description of class CrabWorld here.
  * 
@@ -8,34 +10,32 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CrabWorld extends World
 {
+    private GameSettings gameSettings;
+    private Counter counter;
+    private ArrayList<Lobster> lobsters = new ArrayList<>();
 
     /**
      * Constructor for objects of class CrabWorld.
-     * 
+     *
      */
-    
-    private Counter counter;
-    
-    public CrabWorld()
-    {    
-        super(800, 600, 1);
-
-        prepareWorld(); 
+    public CrabWorld(GameSettings gameSettings)
+    {
+        super(gameSettings.getCurrentMapSize().x, gameSettings.getCurrentMapSize().y, 1);
+        this.gameSettings = gameSettings;
+        prepareWorld();
     }
-    
+
     private void prepareWorld()
     {
         counter = new Counter();
+        int lobsterAmount = gameSettings.getCurrentGameDifficulty().enemyAmount;
 
-        addObject(counter, 120, 30);
-        
+        addObject(counter, 100, 30);
         spawnCrabs();
-
         spawnWorms();
-
-        spawnLobsters();
+        spawnLobsters(lobsterAmount);
     }
-    
+
     // Crear cangrejos
     public void spawnCrabs()
     {
@@ -45,7 +45,7 @@ public class CrabWorld extends World
         addObject(mainCrab, getWidth()/2, getHeight()/2);
 
         // Otros 4 crabs aleatorios
-        for(int i = 0; i < 4; i++)
+        /*for(int i = 0; i < 4; i++)
         {
             Crab crab = new Crab();
 
@@ -54,9 +54,9 @@ public class CrabWorld extends World
             int y = Greenfoot.getRandomNumber(getHeight());
 
             addObject(crab, x, y);
-        }
+        }*/
     }
-    
+
     // Crear gusanos aleatorios
     public void spawnWorms()
     {
@@ -71,32 +71,41 @@ public class CrabWorld extends World
             addObject(worm, x, y);
         }
     }
-    
+
     // Crear Langostas
-    public void spawnLobsters()
+    public void spawnLobsters(int amount)
     {
-        // Esquina izquierda superior
-        Lobster lobster1 = new Lobster();
+        while (lobsters.size() < amount) {
+            Lobster lobster = new Lobster();
 
-        addObject(lobster1, 50, 50);
+            int x = Greenfoot.getRandomNumber(getWidth());
+            int y = Greenfoot.getRandomNumber(getHeight());
 
-        // Esquina derecha superior
-        Lobster lobster2 = new Lobster();
+            int mainCrabX = getWidth()/2;
+            int mainCrabY = getHeight()/2;
 
-        addObject(lobster2, getWidth() - 50, 50);
+            // Nos aseguramos que las langostas no aparezcan demasiado cerca del cangrejo principal.
+            if (mainCrabX+10 >= x && x >= mainCrabX-10) continue;
+            if (mainCrabY+10 >= x && x >= mainCrabY-10) continue;
 
-        // Lobster extra aleatoria
-        Lobster lobster3 = new Lobster();
-
-        int x = Greenfoot.getRandomNumber(getWidth());
-
-        int y = Greenfoot.getRandomNumber(getHeight());
-
-        addObject(lobster3, x, y);
+            lobsters.add(lobster);
+            addObject(lobster, x, y);
+        }
     }
-    
+
     public Counter getCounter()
     {
         return counter;
+    }
+    
+    /**
+     * Prepare the world for the start of the program.
+     * That is: create the initial objects and add them to the world.
+     */
+    private void prepare()
+    {
+        Counter counter = new Counter();
+        addObject(counter,404,201);
+        removeObject(counter);
     }
 }
