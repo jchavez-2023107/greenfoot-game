@@ -42,7 +42,7 @@ public class MenuWorld extends World
     }
 
     private void play() {
-        Greenfoot.setWorld(new CrabWorld(gameSettings));
+        Greenfoot.setWorld(new Level1World(gameSettings));
     }
 
     private void settings() {

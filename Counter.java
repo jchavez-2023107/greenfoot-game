@@ -26,13 +26,16 @@ public class Counter extends Actor
     public void addScore(int points)
     {
         score = score + points;
-
         updateImage();
     }
 
     // Actualizar texto [Mostrar :)]
     public void updateImage()
     {
-        setImage(new GreenfootImage("Score: " + score, 30, Color.WHITE, Color.BLACK));
+        setImage(new GreenfootImage("Llaves: " + score + "/3", 30, Color.WHITE, Color.BLACK));
+    }
+
+    public int getScore() {
+        return score;
     }
 }
