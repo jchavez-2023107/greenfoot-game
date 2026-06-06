@@ -19,72 +19,48 @@ public class Level2World extends GameWorld
     }
 
     @Override
+    protected void setPlayerSpawn() {
+        spawnX = getWidth()/2;
+        spawnY = getHeight()/8;
+    }
+
+    @Override
     protected void nextWorld() {
         Greenfoot.setWorld(new Level3World(gameSettings));
     }
 
     @Override
-    protected void prepareWorld()
-    {
-        int lobsterAmount = gameSettings.getCurrentGameDifficulty().enemyAmount;
-
-        spawnCounter();
-        spawnDoor();
-        spawnPlayer();
-        spawnKey();
-        spawnZombies(lobsterAmount);
-    }
-
-    private void spawnPlayer()
-    {
-        Player mainPlayer = Player.get();
-        addObject(mainPlayer, getWidth()/2, getHeight()/2);
-    }
-
-    private void spawnDoor() {
+    protected void spawnDoor() {
         exitDoor = new ExitDoor();
         addObject(exitDoor, getWidth()/8, getHeight()/2);
     }
 
-    private void spawnCounter() {
-        counter = new Counter();
-        addObject(counter, 70, 30);
+    @Override
+    protected void spawnKeys()
+    {
+        Key key1 = new Key();
+        Key key2 = new Key();
+        Key key3 = new Key();
+
+        addObject(key1, getWidth()/2, getHeight()/2);
+        addObject(key2, getWidth()/8, getHeight()/5);
+        addObject(key3, getWidth()/8*7, getHeight()/8);
     }
 
-    private void spawnKey()
-    {
-        for(int i = 0; i < 3; i++)
-        {
-            Key key = new Key();
+    @Override
+    protected void spawnWalls() {
+        Wall wall1 = new Wall(50, 800, defaultWallTexture);
+        addObject(wall1, getWidth()/5, getHeight()/2-100);
 
-            int x = Greenfoot.getRandomNumber(getWidth());
+        Wall wall2 = new Wall(500, 50, defaultWallTexture);
+        addObject(wall2, getWidth()/2, getHeight()/5);
 
-            int y = Greenfoot.getRandomNumber(getHeight());
+        Wall wall3 = new Wall(50, 500, defaultWallTexture);
+        addObject(wall3, getWidth()/5*4, getHeight()/2);
 
-            addObject(key, x, y);
-        }
-    }
-
-    // Crear Langostas
-    private void spawnZombies(int amount)
-    {
-        int safeZone = 100;
-
-        while (zombies.size() < amount) {
-            Zombie zombie = new Zombie();
-
-            int x = Greenfoot.getRandomNumber(getWidth());
-            int y = Greenfoot.getRandomNumber(getHeight());
-
-            int mainCrabX = getWidth()/2;
-            int mainCrabY = getHeight()/2;
-
-            // Nos aseguramos que las langostas no aparezcan demasiado cerca del cangrejo principal.
-            if (mainCrabX+safeZone >= x && x >= mainCrabX-safeZone) continue;
-            if (mainCrabY+safeZone >= x && x >= mainCrabY-safeZone) continue;
-
-            zombies.add(zombie);
-            addObject(zombie, x, y);
-        }
+        Wall wall4 = new Wall(200, 50, defaultWallTexture);
+        Wall wall5 = new Wall(200, 50, defaultWallTexture);
+        addObject(wall4, getWidth()/2+160, getHeight()/5*4);
+        addObject(wall5, getWidth()/2-160, getHeight()/5*4);
     }
 }
