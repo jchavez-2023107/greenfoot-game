@@ -1,8 +1,9 @@
+import greenfoot.Color;
 import greenfoot.Greenfoot;
 import greenfoot.World;
 
 public class SettingsWorld extends World {
-    private GameSettings gameSettings;
+    private final GameSettings gameSettings;
 
     public SettingsWorld(GameSettings gameSettings) {
         super(500, 500, 1);
@@ -11,7 +12,7 @@ public class SettingsWorld extends World {
     }
 
     private void loadButtons() {
-        MutableButton mapSizeButton = new MutableButton("Tamaño del mapa: ", this::updateMapSizeRender, this::switchMapSize);
+        Label mapSizeButton = new Label("Configuración", Color.BLACK);
         MutableButton difficultyButton = new MutableButton("Dificultad: ", this::updateDifficultyRender, this::switchDifficulty);
         Button returnButton = new Button("Regresar", this::returnToMainMenu);
 

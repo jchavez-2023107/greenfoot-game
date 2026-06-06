@@ -68,6 +68,8 @@ public class Level2World extends GameWorld
     // Crear Langostas
     private void spawnZombies(int amount)
     {
+        int safeZone = 100;
+
         while (zombies.size() < amount) {
             Zombie zombie = new Zombie();
 
@@ -78,8 +80,8 @@ public class Level2World extends GameWorld
             int mainCrabY = getHeight()/2;
 
             // Nos aseguramos que las langostas no aparezcan demasiado cerca del cangrejo principal.
-            if (mainCrabX+10 >= x && x >= mainCrabX-10) continue;
-            if (mainCrabY+10 >= x && x >= mainCrabY-10) continue;
+            if (mainCrabX+safeZone >= x && x >= mainCrabX-safeZone) continue;
+            if (mainCrabY+safeZone >= x && x >= mainCrabY-safeZone) continue;
 
             zombies.add(zombie);
             addObject(zombie, x, y);

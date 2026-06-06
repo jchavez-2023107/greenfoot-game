@@ -1,7 +1,7 @@
 public enum GameDifficulty {
-    EASY(1),
-    MEDIUM(3),
-    HARD(5);
+    EASY(5),
+    MEDIUM(10),
+    HARD(15);
 
     public final int enemyAmount;
 

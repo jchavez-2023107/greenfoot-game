@@ -8,6 +8,7 @@ public abstract class GameWorld extends World {
     protected Counter counter;
     protected ArrayList<Zombie> zombies = new ArrayList<>();
     protected ExitDoor exitDoor;
+    protected String defaultWallTexture = "bricks3.jpg";
 
     public GameWorld(GameSettings gameSettings)
     {
@@ -21,7 +22,7 @@ public abstract class GameWorld extends World {
     protected abstract void nextWorld();
 
     protected void unloadWorld() {
-        Greenfoot.setWorld(new MenuWorld(gameSettings));
+        Greenfoot.setWorld(new EndingWorld(gameSettings, "Perdiste"));
     }
 
     public Counter getCounter()

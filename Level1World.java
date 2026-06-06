@@ -28,20 +28,23 @@ public class Level1World extends GameWorld
     {
         int lobsterAmount = gameSettings.getCurrentGameDifficulty().enemyAmount;
 
-        Wall wall = new Wall();
-        addObject(wall, 100, 100);
-
         spawnCounter();
         spawnDoor();
+        spawnWalls();
         spawnPlayer();
         spawnKey();
         spawnZombies(lobsterAmount);
     }
 
+    private void spawnWalls() {
+        Wall wall1 = new Wall(200, 20, defaultWallTexture);
+        addObject(wall1, getHeight()/2, getWidth()/2);
+    }
+
     private void spawnPlayer()
     {
         Player mainPlayer = Player.get();
-        addObject(mainPlayer, getWidth()/2, getHeight()/2);
+        addObject(mainPlayer, getWidth()/2, getHeight()-10);
     }
 
     private void spawnDoor() {
@@ -71,6 +74,8 @@ public class Level1World extends GameWorld
     // Crear Langostas
     private void spawnZombies(int amount)
     {
+        int safeZone = 100;
+
         while (zombies.size() < amount) {
             Zombie zombie = new Zombie();
 
@@ -80,9 +85,8 @@ public class Level1World extends GameWorld
             int mainCrabX = getWidth()/2;
             int mainCrabY = getHeight()/2;
 
-            // Nos aseguramos que las langostas no aparezcan demasiado cerca del cangrejo principal.
-            if (mainCrabX+10 >= x && x >= mainCrabX-10) continue;
-            if (mainCrabY+10 >= x && x >= mainCrabY-10) continue;
+            if (mainCrabX+safeZone >= x && x >= mainCrabX-safeZone) continue;
+            if (mainCrabY+safeZone >= x && x >= mainCrabY-safeZone) continue;
 
             zombies.add(zombie);
             addObject(zombie, x, y);

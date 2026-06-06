@@ -1,3 +1,4 @@
+@Deprecated
 public enum MapSizes {
     SMALL(400, 400),
     MEDIUM(600, 600),
