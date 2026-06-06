@@ -4,9 +4,9 @@ Tell the reader (someone who does not know anything about this project)
 all he/she needs to know. The comments should usually include at least:
 ------------------------------------------------------------------------
 
-PROJECT TITLE: CRAB GAME
+PROJECT TITLE: Dungeon Game
 PURPOSE OF PROJECT: Projecto final para Introducción a CC y TI.
-VERSION or DATE: v1
+VERSION or DATE: v2
 HOW TO START THIS PROJECT:
-AUTHORS: Fabio Calvo, Alejandro Chavez, Diego Ruiz, Henry Vicente, Jordi Salazar
+AUTHORS: Fabio Calvo, Alejandro Chavez, Henry Vicente, Jordi Salazar
 USER INSTRUCTIONS:
