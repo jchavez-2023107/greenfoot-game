@@ -10,6 +10,10 @@ public class Player extends Actor
 
     private Player() {
         PLAYER_INSTANCE = this;
+        GreenfootImage img = new GreenfootImage("warrior.png");
+        img.scale(80, 100); 
+        setImage(img);
+
         this.gun = new Gun();
     }
 
@@ -42,6 +46,7 @@ public class Player extends Actor
     private void fireGun() {
         if (Greenfoot.mouseClicked(getWorld())) {
             gun.shoot();
+            Greenfoot.playSound("gunSound.wav");
         }
     }
 
@@ -77,7 +82,7 @@ public class Player extends Actor
         {
             World world = getWorld();
             world.removeObject(key);
-            Greenfoot.playSound("eating.wav");
+            Greenfoot.playSound("keys.wav");
             
             // Sumar los puntos
             GameWorld gameWorld = (GameWorld)world;
@@ -103,7 +108,7 @@ public class Player extends Actor
      */
     public class Gun extends Actor
     {
-        private final String gunTexture = "rocket.png";
+        private final String gunTexture = "ball.png";
 
         protected Gun() {
             render();

@@ -11,8 +11,11 @@ public class Zombie extends Actor {
     private boolean dumbBehavior = false;
 
     public Zombie(GameSettings gameSettings) {
+        GreenfootImage img = new GreenfootImage("zombie.png");
+        img.scale(70, 70);
+        setImage(img);
         loadSettings(gameSettings);
-    }
+}
 
     private void loadSettings(GameSettings gameSettings) {
         switch (gameSettings.getCurrentGameDifficulty()) {
