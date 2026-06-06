@@ -52,7 +52,7 @@ public abstract class GameWorld extends World {
         int safeZone = 100;
 
         while (zombies.size() < amount) {
-            Zombie zombie = new Zombie();
+            Zombie zombie = new Zombie(gameSettings);
 
             int x = Greenfoot.getRandomNumber(getWidth());
             int y = Greenfoot.getRandomNumber(getHeight());
