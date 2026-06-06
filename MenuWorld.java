@@ -9,7 +9,7 @@ import greenfoot.World;  // World class from Greenfoot library
  */
 public class MenuWorld extends World
 {
-    private GameSettings gameSettings;
+    private final GameSettings gameSettings;
 
     /**
      * Constructor for objects of class MenuWorld.

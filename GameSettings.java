@@ -5,7 +5,7 @@ public class GameSettings {
     private GameDifficulty currentDiffculty;
 
     private GameSettings() {
-        currentMapSize = MapSizes.MEDIUM;
+        currentMapSize = MapSizes.LARGE;
         currentDiffculty = GameDifficulty.MEDIUM;
     }
 
